@@ -1,16 +1,28 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="utf-8">
-<meta http-equiv="refresh"content="0;URL=https://line.me/ti/g2/J8dIx0CbzcBRIpVsq3lIX-dMMyU4aaaajp52Zw?utm_source=invitation&utm_medium=link_copy&utm_campaign=default">
-<meta charset="UTF-8">
-<title>LINE OPENCHAT</title>
-<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, viewport-fit=cover">
-<meta name="format-detection" content="telephone=no">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta property="og:title" content="ユニコ実験場">
-<meta property="og:type" content="website">
-<meta property="og:description" content="野菜集団の植民地5؜">
-<meta property="og:image" content="https://profile.line-scdn.net/r/g2/group/og_tag_default_image.png/c.496x273">
-<meta property="og:site_name" content="LINE OPENCHAT">
-<meta property="fb:app_id" content="136895609724349">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文字列の文字一覧</title>
+</head>
+<body>
+    <h1>文字列の文字一覧を表示</h1>
+    <input type="text" id="inputString" placeholder="文字列を入力してください">
+    <button onclick="displayCharacters()">表示</button>
+    <div id="result"></div>
+
+    <script>
+        function displayCharacters() {
+            // 入力フィールドから値を取得
+            let inputString = document.getElementById('inputString').value;
+            
+            // 文字列をセットに変換して重複を排除し、配列に変換してソート
+            let uniqueChars = Array.from(new Set(inputString)).sort();
+            
+            // 結果を表示
+            let resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '<p>文字列を構成する文字: ' + uniqueChars.join(', ') + '</p>';
+        }
+    </script>
+</body>
+</html>
