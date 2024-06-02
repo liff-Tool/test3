@@ -4,6 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>文字列の文字一覧</title>
+    <style>
+        .char {
+            display: inline-block;
+            margin: 5px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+        .char:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
 </head>
 <body>
     <h1>文字列の文字一覧を表示</h1>
@@ -21,7 +33,23 @@
             
             // 結果を表示
             let resultDiv = document.getElementById('result');
-            resultDiv.innerHTML = '<p>文字列を構成する文字: ' + uniqueChars.join(', ') + '</p>';
+            resultDiv.innerHTML = ''; // 結果をクリア
+
+            uniqueChars.forEach(char => {
+                let charElement = document.createElement('span');
+                charElement.className = 'char';
+                charElement.textContent = char;
+                charElement.onclick = () => copyToClipboard(char);
+                resultDiv.appendChild(charElement);
+            });
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert(`'${text}' をクリップボードにコピーしました`);
+            }).catch(err => {
+                console.error('クリップボードへのコピーに失敗しました:', err);
+            });
         }
     </script>
 </body>
